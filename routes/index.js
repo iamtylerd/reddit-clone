@@ -23,10 +23,11 @@ const Create = require('../models/newPost')
 		res.render('404')
 	})
 
-	router.post('/new', (req, res, err) => {
+	router.post('/new', (req, res, next) => {
 		Create
 			.create(req.body)
 			.then(() => res.redirect('/'))
+			.catch(next)
 	})
 
 	module.exports = router;
