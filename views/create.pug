@@ -1,28 +1,22 @@
-doctype html
-html
-		head
-				title Reddit Clone
-				link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.min.css')
-				link(rel='stylesheet', href='/css/main.css')
-		body
-			.container.text-center
-				h1 Create New Post
-			.formDiv.col-sm-12
-				form(method='POST')
-					.form-group
-						label(for='title') Title
-						input.form-control#title(type="text" name='title' placeholder="Title" required)/
-					.form-group
-						label(for='url') Link to Article
-						input.form-control#url(type="text" name='url' placeholder="Url" required)/
-					.form-group
-						label(for='img') Link to Image
-						input.form-control#img(type="text" name='img' placeholder="Url" required)/
-					.form-group
-						label(for='user') User
-						input.form-control#user(type="text" name='user' placeholder="Name" required)
-					.form-group.btn
-						button(type="submit") Submit
+include partials/header
+.container.text-center
+	h1 Create New Post
+.formDiv.col-sm-12
+	form(method='POST')
+		.form-group
+			label(for='title') Title
+			input.form-control#title(type="text" name='title' placeholder="Title" required)/
+		.form-group
+			label(for='url') Link to Article
+			input.form-control#url(type="text" name='url' placeholder="Url" required)/
+		.form-group
+			label(for='img') Link to Image
+			input.form-control#img(type="text" name='img' placeholder="Url" required)/
+		.form-group
+			label(for='user') User
+			input.form-control#user(type="text" name='user' placeholder="Name" required)
+		.form-group.btn
+			button(type="submit") Submit
 
 				script(src='/lib/jquery/dist/jquery.min.js')
 				script(src='/lib/bootstrap/dist/js/bootstrap.min.js')

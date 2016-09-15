@@ -2,11 +2,14 @@ body {
 	background-color: salmon;
 }
 
-.post-image {
-	max-height: 5em;
-	max-width: 5em;
+.votes {
+	display: inline;
 }
 
-.post-title {
-	font-size: 2em;
+.postDiv img {
+	max-width: 70%;
+}
+
+.title {
+	font-size: 3rem;
 }

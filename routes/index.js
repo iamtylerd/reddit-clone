@@ -20,7 +20,6 @@ const Create = require('../models/newPost')
 	})
 
 	router.post('/:id/up', (req, res, next) => {
-		console.log(req.params.id)
 		let one = 1;
 		const postId = req.params.id;
 
@@ -31,7 +30,6 @@ const Create = require('../models/newPost')
 	})
 
 	router.post('/:id/down', (req, res, next) => {
-		console.log(req.params.id)
 		let one = 1;
 		const postId = req.params.id;
 

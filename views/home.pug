@@ -1,21 +1,19 @@
-doctype html
-html
-    head
-        title Reddit Clone
-        link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.min.css')
-        link(rel='stylesheet', href='/css/main.css')
-    body
-        .container
-            h1 Reddit 
-            each post in posts   
+include partials/header
+.container
+    each post in posts
+        .col-sm-6.col-sm-offset-3.postDiv
+            .col-sm-6
+                span(class="score") #{post.score}
                 form(method='POST' action=`/${post.id}/up`)
-                    button(type="submit" id=post.title) +
+                    button(type="submit" id=post.title class="btn btn-success votes") +
                 form(method='POST' action=`/${post.id}/down`)
-                    button(type="submit" id=post.title) -
-                p #{post.score}
-                img.post-image(src=post.img)
-                a.post-size(href=post.url) #{post.title}
-               
+                    button(type="submit" id=post.title class="btn btn-danger votes") -
+            img.post-image(src=post.img class="photo")
+            .row
+                a.post-size(href=post.url)
+                    p.text-center.title #{post.title}
+            p.text-center Post by: #{post.user}
+
         script(src='/lib/jquery/dist/jquery.min.js')
         script(src='/lib/bootstrap/dist/js/bootstrap.min.js')
 
