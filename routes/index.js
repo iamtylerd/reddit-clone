@@ -19,6 +19,16 @@ const Create = require('../models/newPost')
 		res.render('create',  { page: 'create' })
 	})
 
+	router.post('/:id/up', (req, res, next) => {
+		console.log("up")
+		res.redirect('/')
+	})
+
+	router.post('/:id/down', (req, res, next) => {
+		
+		res.redirect('/')
+	})
+
 	router.get('/404', (req,res) => {
 		res.render('404')
 	})

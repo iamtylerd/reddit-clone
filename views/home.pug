@@ -5,6 +5,17 @@ html
         link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='/css/main.css')
     body
+        .container
+            h1 Reddit 
+            each post in posts   
+                form(method='POST' action=`/${post.id}/up`)
+                    button(type="submit" id=post.title) +
+                form(method='POST' action=`/${post.id}/down`)
+                    button(type="submit" id=post.title) -
+                p #{post.score}
+                img.post-image(src=post.img)
+                a.post-size(href=post.url) #{post.title}
+               
         script(src='/lib/jquery/dist/jquery.min.js')
         script(src='/lib/bootstrap/dist/js/bootstrap.min.js')
 
