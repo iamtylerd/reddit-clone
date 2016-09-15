@@ -10,7 +10,7 @@ const Create = require('../models/newPost')
 	router.get('/', (req,res, err) =>
 		Create
 			.find()
-			.sort({score: 1})
+			.sort({score: -1})
 			.then((posts) => res.render('home', {posts}))
 			.catch(err)
 	)
@@ -20,13 +20,25 @@ const Create = require('../models/newPost')
 	})
 
 	router.post('/:id/up', (req, res, next) => {
-		console.log("up")
-		res.redirect('/')
+		console.log(req.params.id)
+		let one = 1;
+		const postId = req.params.id;
+
+		Create
+			.findByIdAndUpdate(postId, {$inc: { score: 1} })
+			.then(() => res.redirect('/'))
+			.catch(console.error)
 	})
 
 	router.post('/:id/down', (req, res, next) => {
-		
-		res.redirect('/')
+		console.log(req.params.id)
+		let one = 1;
+		const postId = req.params.id;
+
+		Create
+			.findByIdAndUpdate(postId, {$inc: { score: -1} })
+			.then(() => res.redirect('/'))
+			.catch(console.error)
 	})
 
 	router.get('/404', (req,res) => {
