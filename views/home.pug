@@ -13,6 +13,7 @@ include partials/header
                 a.post-size(href=post.url)
                     p.text-center.title #{post.title}
             p.text-center Post by: #{post.user}
+            a.comments(href=`${post.id}`) Comments
 
         script(src='/lib/jquery/dist/jquery.min.js')
         script(src='/lib/bootstrap/dist/js/bootstrap.min.js')
