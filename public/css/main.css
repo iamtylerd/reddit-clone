@@ -13,3 +13,7 @@ body {
 .title {
 	font-size: 3rem;
 }
+
+.postContainer {
+	margin-bottom: 5rem;
+}

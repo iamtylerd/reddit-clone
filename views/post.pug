@@ -1,11 +1,15 @@
 include partials/header
-.container
-	h1 #{post.title}
-	img(src=post.img)
-	.formDiv.col-sm-12
-	form(method='POST' action=`/${post.id}/comment`)
-		.form-group
-			label(for='comments') Comment
-			textarea.form-control#comments(name='comments')
-		.form-group.btn
-			button(type="submit") Submit
+.container.postContainer
+	.col-sm-8.col-offset-2
+		h1 #{post.title}
+		img.img-responsive(src=post.img)
+		.formDiv.col-sm-12
+		form(method='POST' action=`/${post.id}/comment`)
+			.form-group
+				label(for='comments') Comment
+				textarea.form-control#comments(name='comments')
+			.form-group.btn
+				button(type="submit") Submit
+		ul
+			each comment in post.comments
+				li #{comment}

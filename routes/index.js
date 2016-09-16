@@ -41,7 +41,7 @@ const Create = require('../models/newPost')
 		console.log(req.body.comments)
 		Create
 			.findByIdAndUpdate(postId,  {$push: {comments: req.body.comments}})
-			.then(() => res.redirect('/:id'))
+			.then(() => res.redirect(`/${postId}`))
 			.catch(console.error)
 	})
 
