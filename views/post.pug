@@ -1,0 +1,11 @@
+include partials/header
+.container
+	h1 #{post.title}
+	img(src=post.img)
+	.formDiv.col-sm-12
+	form(method='POST' action=`/${post.id}/comment`)
+		.form-group
+			label(for='comments') Comment
+			textarea.form-control#comments(name='comments')
+		.form-group.btn
+			button(type="submit") Submit

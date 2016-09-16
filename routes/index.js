@@ -19,6 +19,13 @@ const Create = require('../models/newPost')
 		res.render('create',  { page: 'create' })
 	})
 
+	router.get('/:id', (req, res) => {
+		const postId = req.params.id;
+		Create
+			.findById(postId)
+			.then((post) => res.render('post', {post}))
+	})
+
 	router.post('/:id/up', (req, res, next) => {
 		let one = 1;
 		const postId = req.params.id;
@@ -26,6 +33,15 @@ const Create = require('../models/newPost')
 		Create
 			.findByIdAndUpdate(postId, {$inc: { score: 1} })
 			.then(() => res.redirect('/'))
+			.catch(console.error)
+	})
+
+	router.post('/:id/comment', (req, res, next) => {
+		const postId = req.params.id;
+		console.log(req.body.comments)
+		Create
+			.findByIdAndUpdate(postId,  {$push: {comments: req.body.comments}})
+			.then(() => res.redirect('/:id'))
 			.catch(console.error)
 	})
 

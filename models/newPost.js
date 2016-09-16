@@ -6,5 +6,6 @@ module.exports = mongoose.model('New', {
 	url: String,
 	user: String,
 	score: {type: Number, default: 0},
-	img: String
+	img: String,
+	comments: [String]
 });
