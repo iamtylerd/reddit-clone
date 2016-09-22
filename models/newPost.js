@@ -7,5 +7,10 @@ module.exports = mongoose.model('New', {
 	user: String,
 	score: {type: Number, default: 0},
 	img: String,
-	comments: [String]
+	comments: [
+		{
+			comment: {type: String},
+			userName: {type: String}
+		}
+	]
 });

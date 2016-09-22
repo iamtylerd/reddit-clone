@@ -3,7 +3,9 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const chalk = require('chalk')
-
+const session = require('express-session')
+const RedisStore = require('connect-redis')(session)
+const passport = require('passport')
 
 const routes = require('./routes/')
 const { connect } = require('./database')
@@ -15,8 +17,6 @@ const port = process.env.PORT || 3000
 app.set('port', port)
 
 
-// app.engine('handlebars', hbs());
-// app.set('views', 'views');
 
 //do not have to declare ejs / pug templates
 app.set('view engine', 'pug');
@@ -26,7 +26,27 @@ if(process.env.NODE_ENV !== 'production') {
 }
 app.locals.company = "Reddit Clone"
 
+app.use(session({
+  store: new RedisStore({
+  	url: process.env.REDIS_URL || 'redis://localhost:6379'
+  }),
+  secret: 'redditsecretkey'
+}))
 
+
+require('./passport-config')
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use((req, res, next) => {
+  app.locals.email = req.user && req.user.email
+  next()
+})
+
+app.use((req, res, next) => {
+	app.locals.name = req.user && req.user.name
+	next()
+})
 
 //Middlewares about routes
 app.use((req, res, next) => {
@@ -46,6 +66,7 @@ app.use(routes)
 app.use((req, res) => {
 	res.render('404')
 })
+
 
 //Error handling middleware - at bottom
 app.use((err, req, res, next) => {

@@ -13,11 +13,7 @@ include partials/header
 			label(for='img') Link to Image
 			input.form-control#img(type="text" name='img' placeholder="Url" required)/
 		.form-group
-			label(for='user') User
-			input.form-control#user(type="text" name='user' placeholder="Name" required)
+			input.form-control#user(type='hidden' name='user' value=name)
 		.form-group.btn
 			button(type="submit") Submit
-
-				script(src='/lib/jquery/dist/jquery.min.js')
-				script(src='/lib/bootstrap/dist/js/bootstrap.min.js')
 
