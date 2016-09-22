@@ -4,12 +4,13 @@ include partials/header
 		h1 #{post.title}
 		img.img-responsive(src=post.img)
 		.formDiv.col-sm-12
-		form(method='POST' action=`/${post.id}/comment`)
-			.form-group
-				label(for='comments') Comment
-				textarea.form-control#comments(name='comments')
-			.form-group.btn
-				button(type="submit") Submit
+		if email
+			form(method='POST' action=`/single/${post.id}/comment`)
+				.form-group
+					label(for='comments') Comment
+					textarea.form-control#comments(name='comments')
+				.form-group.btn
+					button(type="submit") Submit
 		ul
 			each comment in post.comments
-				li #{comment}
+				li #{comment.comment} - #{comment.userName}
